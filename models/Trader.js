@@ -1,4 +1,4 @@
-import mongoose, { mongo } from "mongoose";
+import mongoose from "mongoose";
 
 const traderSchema = mongoose.Schema({
     nombre: {
@@ -18,13 +18,13 @@ const traderSchema = mongoose.Schema({
     },
     presupuesto: {
         type: Number,
-        required,
+        required: true,
         trim: true
     }
-},{
+}, {
     timestamp: true
 });
 
-const Trader = mongoose.model("Trader", traderSchema);
+const Trader = mongoose.model("trader", traderSchema);
 
 export default Trader;

@@ -1,11 +1,12 @@
+import Trader from "../models/Trader.js";
+
 const getTraders = async(req, res) => {
     try {
-        const trader = await findOne
-        res.status(500).json({
-            "message": "Home page"
-        })
+        const trader = await Trader.find();
+        res.json(trader);
     } catch (error) {
-
+        res.status(500);
+        res.send(error.message);
     }
 }
 

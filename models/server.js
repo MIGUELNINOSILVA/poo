@@ -20,6 +20,8 @@ class Server {
         this.app.use(express.static('public'));
         //Cors
         this.app.use(cors());
+        //Express json
+        this.app.use(express.json());
     }
 
     routes() {
