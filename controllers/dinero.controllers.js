@@ -44,9 +44,25 @@ const borrarDinero = async (req, res) => {
     }
 }
 
+const actualizarDinero = async (req, res) => {
+    try {
+        const dinero = await Dinero.findOne({ _id: req.params.id });
+        if (req.body.moneda) {
+            dinero.moneda = req.body.moneda;
+        }
+        await dinero.save();
+        res.send(dinero);
+
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+    }
+}
+
 export {
     getDinero,
     obtenerUnDinero,
     borrarDinero,
-    agregarDinero
+    agregarDinero,
+    actualizarDinero
 }
