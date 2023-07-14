@@ -10,6 +10,18 @@ const getTraders = async(req, res) => {
     }
 }
 
+const obtenerUntrader = async (req, res) => {
+    try {
+        const trader = await Trader.findOne({_id: req.params.id});
+        res.json(trader);
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+    }
+}
+
+
 export {
-    getTraders
+    getTraders,
+    obtenerUntrader
 }
