@@ -43,9 +43,34 @@ const borrarTrader = async (req, res) => {
     }
 }
 
+const actualizarTrader = async (req, res) => {
+    try {
+        const trader = await Trader.findOne({ _id: req.params.id });
+        if (req.body.nombre) {
+            trader.nombre = req.body.nombre;
+        }
+        if (req.body.edad) {
+            trader.edad = req.body.edad;
+        }
+        if (req.body.nacionalidad) {
+            trader.nacionalidad = req.body.nacionalidad;
+        }
+        if (req.body.presupuesto) {
+            trader.presupuesto = req.body.presupuesto;
+        }
+        await trader.save();
+        res.send(trader);
+
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+    }
+}
+
 export {
     getTraders,
     obtenerUntrader,
     agregarTrader,
-    borrarTrader
+    borrarTrader,
+    actualizarTrader
 }
