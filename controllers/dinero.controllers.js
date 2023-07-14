@@ -20,7 +20,33 @@ const obtenerUnDinero = async (req, res) => {
     }
 }
 
+
+const agregarDinero = async (req, res) => {
+    const dinero = new Dinero(req.body);
+    try {
+        const nuevoDinero = await dinero.save();
+        res.json(nuevoDinero);
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+    }
+}
+
+const borrarDinero = async (req, res) => {
+    try {
+        await Dinero.deleteOne({ _id: req.params.id });
+        res.status(200).send({
+            response: "Eliminado correctamente."
+        });
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+    }
+}
+
 export {
     getDinero,
-    obtenerUnDinero
+    obtenerUnDinero,
+    borrarDinero,
+    agregarDinero
 }
