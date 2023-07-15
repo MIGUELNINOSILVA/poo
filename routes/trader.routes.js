@@ -13,6 +13,6 @@ router.get("/", getTraders);
 router.get("/one/:id", obtenerUntrader);
 router.post("/add", agregarTrader);
 router.delete("/delete/:id", borrarTrader);
-router.patch("/upd/:id",actualizarTrader);
+router.patch("/upd/:id", actualizarTrader);
 
 export default router;

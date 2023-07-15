@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import routerTraders from '../routes/trader.routes.js';
 import routerDinero from '../routes/dinero.routes.js';
+import  routerTipoDinero from '../routes/tipodinero.routes.js';
 
 class Server {
 
@@ -10,6 +11,7 @@ class Server {
         this.port = process.env.PORT;
         this.traderPath = "/api/trader";
         this.dineroPath = "/api/dinero";
+        this.tipodineroPath = "/api/tipodinero";
         //Middlewares
         this.middlewares();
         //Routing
@@ -28,6 +30,7 @@ class Server {
     routes() {
         this.app.use(this.traderPath,routerTraders);
         this.app.use(this.dineroPath, routerDinero);
+        this.app.use(this.tipodineroPath, routerTipoDinero);
     }
 
     listen() {
