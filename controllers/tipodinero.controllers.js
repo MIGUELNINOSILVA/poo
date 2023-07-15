@@ -32,8 +32,21 @@ const agregarTipoDinero = async (req, res) => {
     }
 }
 
+const borrarTipoDinero = async (req, res) => {
+    try {
+        await TipoDineros.deleteOne({ _id: req.params.id });
+        res.status(200).send({
+            response: "Eliminado correctamente."
+        });
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+    }
+}
+
 export {
     getTipoDineros,
     obtenerUnTipoDinero,
-    agregarTipoDinero
+    agregarTipoDinero,
+    borrarTipoDinero
 }
