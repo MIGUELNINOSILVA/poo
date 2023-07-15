@@ -13,7 +13,7 @@ const getTipoDineros = async (req, res) => {
 
 const obtenerUnTipoDinero = async (req, res) => {
     try {
-        const tipoDinero = await TipoDineros.findOne({_id: req.params.id});
+        const tipoDinero = await TipoDineros.findOne({ _id: req.params.id });
         res.json(tipoDinero);
     } catch (error) {
         res.status(500);
@@ -44,9 +44,22 @@ const borrarTipoDinero = async (req, res) => {
     }
 }
 
+const actualizarTipoDinero = async (req, res) => {
+    try {
+        let updateTipoDinero = await TipoDineros.findOneAndUpdate({ _id: req.params.id },
+            req.body,
+            { new: true });
+        res.json(updateTipoDinero);
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+    }
+}
+
 export {
     getTipoDineros,
     obtenerUnTipoDinero,
     agregarTipoDinero,
-    borrarTipoDinero
+    borrarTipoDinero,
+    actualizarTipoDinero
 }
