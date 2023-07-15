@@ -3,6 +3,7 @@ import cors from 'cors';
 import routerTraders from '../routes/trader.routes.js';
 import routerDinero from '../routes/dinero.routes.js';
 import  routerTipoDinero from '../routes/tipodinero.routes.js';
+import  routerAcciones from '../routes/acciones.routes.js';
 
 class Server {
 
@@ -12,6 +13,7 @@ class Server {
         this.traderPath = "/api/trader";
         this.dineroPath = "/api/dinero";
         this.tipodineroPath = "/api/tipodinero";
+        this.accionesPath = "/api/acciones";
         //Middlewares
         this.middlewares();
         //Routing
@@ -31,6 +33,7 @@ class Server {
         this.app.use(this.traderPath,routerTraders);
         this.app.use(this.dineroPath, routerDinero);
         this.app.use(this.tipodineroPath, routerTipoDinero);
+        this.app.use(this.accionesPath, routerAcciones);
     }
 
     listen() {
