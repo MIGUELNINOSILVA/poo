@@ -11,6 +11,19 @@ const getTipoDineros = async (req, res) => {
     }
 }
 
+const obtenerUnTipoDinero = async (req, res) => {
+    try {
+        const tipoDinero = await TipoDineros.findOne({_id: req.params.id});
+        res.json(tipoDinero);
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+    }
+}
+
+
+
 export {
-    getTipoDineros
+    getTipoDineros,
+    obtenerUnTipoDinero
 }
