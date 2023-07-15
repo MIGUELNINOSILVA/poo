@@ -43,9 +43,22 @@ const borrarAcciones = async (req, res) => {
     }
 }
 
+const actualizarAcciones = async (req, res) => {
+    try {
+        let updateAcciones = await Acciones.findOneAndUpdate({ _id: req.params.id },
+            req.body,
+            { new: true });
+        res.json(updateAcciones);
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+    }
+}
+
 export {
     getAcciones,
     obtenerUnAcciones,
     agregarAcciones,
-    borrarAcciones
+    borrarAcciones,
+    actualizarAcciones
 }
