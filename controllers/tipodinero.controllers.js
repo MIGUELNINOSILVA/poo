@@ -21,9 +21,19 @@ const obtenerUnTipoDinero = async (req, res) => {
     }
 }
 
-
+const agregarTipoDinero = async (req, res) => {
+    const tipoDinero = new TipoDineros(req.body);
+    try {
+        const nuevotipoDinero = await tipoDinero.save();
+        res.json(nuevotipoDinero);
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+    }
+}
 
 export {
     getTipoDineros,
-    obtenerUnTipoDinero
+    obtenerUnTipoDinero,
+    agregarTipoDinero
 }
