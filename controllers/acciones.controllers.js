@@ -31,8 +31,21 @@ const agregarAcciones = async (req, res) => {
     }
 }
 
+const borrarAcciones = async (req, res) => {
+    try {
+        await Acciones.deleteOne({ _id: req.params.id });
+        res.status(200).send({
+            response: "Eliminado correctamente."
+        });
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+    }
+}
+
 export {
     getAcciones,
     obtenerUnAcciones,
-    agregarAcciones
+    agregarAcciones,
+    borrarAcciones
 }
