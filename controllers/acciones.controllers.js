@@ -20,7 +20,19 @@ const obtenerUnAcciones = async (req, res) => {
     }
 }
 
+const agregarAcciones = async (req, res) => {
+    const acciones = new Acciones(req.body);
+    try {
+        const nuevoAcciones = await acciones.save();
+        res.json(nuevoAcciones);
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+    }
+}
+
 export {
     getAcciones,
-    obtenerUnAcciones
+    obtenerUnAcciones,
+    agregarAcciones
 }
